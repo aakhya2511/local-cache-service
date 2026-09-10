@@ -1,0 +1,6 @@
+/build*/
+/benchmark-results/
+*.sock
+*.log
+.DS_Store
+compile_commands.json
