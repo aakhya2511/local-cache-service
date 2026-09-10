@@ -1,6 +1,6 @@
 # Local Cache Service
 
-A bounded, process-shared in-memory LRU cache for Linux, implemented in C++20. Clients use a
+A bounded, machine-local in-memory LRU cache service for Linux, implemented in C++20. Clients use a
 versioned binary protocol over a Unix domain stream socket; one level-triggered `epoll` loop
 multiplexes connections and a fixed worker pool performs cache operations.
 
