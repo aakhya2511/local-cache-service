@@ -23,7 +23,7 @@ the socket to owner-only (`0600`).
 
 ## Design at a glance
 
-- O(1)-average `GET`, `PUT`, and `DELETE` use `unordered_map<string_view, list::iterator>` plus a
+- `GET` and `DELETE` are O(1) average; `PUT` uses O(1)-average lookup/update operations, with additional O(k) work when k LRU entries must be evicted. The implementation uses `unordered_map<string_view, list::iterator>` plus a
   doubly-linked `std::list`. The list front is MRU; successful GETs and updates promote their node.
 - One cache mutex preserves exact global LRU order. No reference into cache storage escapes it.
 - Entry count, maximum value size, and accounted cache bytes are independently bounded. Insertion
@@ -38,7 +38,7 @@ the socket to owner-only (`0600`).
   guarantee once dispatched to different workers.
 
 See [docs/DESIGN.md](docs/DESIGN.md) for invariants, trade-offs, and the full wire specification.
-The [interview guide](docs/INTERVIEW_GUIDE.md) answers implementation-specific design questions, and
+The [engineering FAQ](docs/ENGINEERING_FAQ.md) answers implementation-specific design questions, and
 the [final audit](docs/AUDIT.md) records corrections and verification gates.
 
 ## Build and use

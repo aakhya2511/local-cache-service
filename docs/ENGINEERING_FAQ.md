@@ -1,4 +1,4 @@
-# ENGINEERING FAQ
+# Engineering FAQ
 
 1. **Why Unix domain sockets instead of TCP?** The service is machine-local. UDS avoids routing
    configuration, usually costs less than loopback TCP, and exposes filesystem permissions.
